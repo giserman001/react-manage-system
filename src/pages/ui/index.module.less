@@ -1,0 +1,39 @@
+.card-wraper{
+  button{
+    margin-right: 20px;
+  }
+}
+.mb20{
+  margin-bottom: 15px;
+}
+
+// 使用css module 的global添加全局样式
+:global(.test .ant-modal-body) {
+  text-align: center;
+}
+:global(.test.ant-modal) {
+  top: 20px;
+}
+
+/* modals */
+/* use css to set position of modal -- 实现水平垂直居中 */
+
+:global(.vertical-center-modal) {
+  text-align: center;
+  white-space: nowrap;
+}
+
+:global(.vertical-center-modal:before) {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0;
+}
+
+:global(.vertical-center-modal .ant-modal) {
+  display: inline-block;
+  vertical-align: middle;
+  top: 0;
+  text-align: left;
+}
