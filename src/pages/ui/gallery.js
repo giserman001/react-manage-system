@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
-import { Card, Row, Col } from 'antd'
+import { Card, Row, Col, Modal } from 'antd'
 // import style from './index.module.less'
 
 class Gallery extends Component {
+  state = {
+    visible: false
+  }
+  openGallery = (imgSrc) => {
+    this.setState({
+      currentImgSrc: '/gallery/' + imgSrc,
+      visible: true
+    })
+  }
   render() {
     const imgs = [
       ['1.png', '2.png', '3.png', '4.png', '5.png'],
@@ -13,14 +22,24 @@ class Gallery extends Component {
     ]
     const imgList = imgs.map((list) => list.map((item) => {
       return (
-        <Card key={item} cover={<img src={'/gallery/' + item} alt='' />}>
+        <Card
+          style={{ marginBottom: 10 }}
+          key={item}
+          cover={
+            <img
+              src={'/gallery/' + item}
+              alt=''
+              onClick={() => { this.openGallery(item) }}
+            />
+          }
+        >
           <Card.Meta title='React Admin' description='I Love React' />
         </Card>
       )
     }))
     return (
       <div>
-        <Row>
+        <Row gutter={10}>
           {
             imgList.map((item, index) => {
               return (
@@ -31,6 +50,24 @@ class Gallery extends Component {
             })
           }
         </Row>
+        <Modal
+          width={300}
+          height={500}
+          title='图片画廊'
+          visible={this.state.visible}
+          onCancel={() => {
+            this.setState({
+              visible: false
+            })
+          }}
+          footer={null}
+        >
+          <img
+            src={this.state.currentImgSrc}
+            alt=''
+            style={{width: '100%'}}
+          />
+        </Modal>
       </div>
     )
   }
