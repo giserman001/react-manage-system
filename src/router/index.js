@@ -6,7 +6,10 @@ import App from '../App'
 import Login from '../pages/login'
 import Admin from '../admin'
 
+// 首页
+import Home from '../pages/home'
 
+// ui
 import Buttons from '../pages/ui/buttons'
 import Modals from '../pages/ui/modals'
 import Loadings from '../pages/ui/loadings'
@@ -15,6 +18,10 @@ import Message from '../pages/ui/message'
 import Tab from '../pages/ui/tabs'
 import Gallery from '../pages/ui/gallery'
 import Carousels from '../pages/ui/carousel'
+
+// form
+import LoginFrom from '../pages/form/login'
+import RegisterForm from '../pages/form/register'
 
 import NoMatch from '../pages/noMatch'
 export default class IRouter extends Component {
@@ -28,6 +35,7 @@ export default class IRouter extends Component {
             return (
               <Admin>
                 <Switch>
+                  <Route path='/admin/home' component={Home}></Route>
                   <Route path='/admin/ui/buttons' component={Buttons}></Route>
                   <Route path='/admin/ui/modals' component={Modals}></Route>
                   <Route path='/admin/ui/loadings' component={Loadings}></Route>
@@ -36,6 +44,8 @@ export default class IRouter extends Component {
                   <Route path='/admin/ui/tabs' component={Tab}></Route>
                   <Route path='/admin/ui/gallery' component={Gallery}></Route>
                   <Route path='/admin/ui/carousel' component={Carousels}></Route>
+                  <Route path='/admin/form/login' component={LoginFrom}></Route>
+                  <Route path='/admin/form/reg' component={RegisterForm}></Route>
                   <Route component={NoMatch} />
                 </Switch>
               </Admin>
