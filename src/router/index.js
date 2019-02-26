@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import App from '../App'
 import Login from '../pages/login'
@@ -25,6 +25,13 @@ import RegisterForm from '../pages/form/register'
 
 // table
 import BasicTable from '../pages/table/basicTable'
+import Hightable from '../pages/table/hightable'
+
+//城市管理
+import City from '../pages/city/index'
+
+//订单管理
+import Order from '../pages/order/index'
 
 import NoMatch from '../pages/noMatch'
 export default class IRouter extends Component {
@@ -33,6 +40,11 @@ export default class IRouter extends Component {
       <Router>
         <App>
           <Route path='/login' component={Login}></Route>
+          <Route path='/' exact render={() => {
+            return (
+              <Redirect to='/admin/home'></Redirect>
+            )
+          }}></Route>
           <Route path='/admin' render={(match) => {
             console.log(match, '我有啥参数？')
             return (
@@ -50,6 +62,9 @@ export default class IRouter extends Component {
                   <Route path='/admin/form/login' component={LoginFrom}></Route>
                   <Route path='/admin/form/reg' component={RegisterForm}></Route>
                   <Route path='/admin/table/basic' component={BasicTable}></Route>
+                  <Route path='/admin/table/high' component={Hightable}></Route>
+                  <Route path='/admin/city' component={City}></Route>
+                  <Route path='/admin/order' component={Order}></Route>
                   <Route component={NoMatch} />
                 </Switch>
               </Admin>
