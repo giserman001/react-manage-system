@@ -2,9 +2,36 @@
 
 .header{
   background: @colorM;
+  .logoBox{
+    line-height: 60px;
+    text-align: left;
+    img{
+      height: 40px;
+      vertical-align: middle;
+    }
+    span{
+      margin-left: 6px;
+      font-size: 18px;
+    }
+  }
+  .commonStyle{
+    color: #fff;
+  }
   .header-top{
     height: 60px;
     line-height: 60px;
+    padding: 0 20px;
+    text-align: right;
+    a{
+      margin-left: 40px;
+    }
+  }
+  // common 页面简单头
+  .header-top-simple{
+    height: 60px;
+    line-height: 60px;
+    background:#1890ff;
+    color:@colorM;
     padding: 0 20px;
     text-align: right;
     a{

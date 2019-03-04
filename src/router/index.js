@@ -33,6 +33,17 @@ import City from '../pages/city/index'
 //订单管理
 import Order from '../pages/order/index'
 
+//common
+import Common from '../common'
+
+// 订单详情
+import Detail from '../pages/order/detail'
+
+// 员工管理
+import User from '../pages/user'
+
+
+
 import NoMatch from '../pages/noMatch'
 export default class IRouter extends Component {
   render() {
@@ -65,12 +76,21 @@ export default class IRouter extends Component {
                   <Route path='/admin/table/high' component={Hightable}></Route>
                   <Route path='/admin/city' component={City}></Route>
                   <Route path='/admin/order' component={Order}></Route>
+                  <Route path='/admin/user' component={User}></Route>
                   <Route component={NoMatch} />
                 </Switch>
               </Admin>
             )
           }}></Route>
-          <Route path='/order/detail' component={Login}></Route>
+          <Route path='/common' render={() => {
+            return (
+              <Common>
+                <Switch>
+                  <Route path='/common/order/detail/:orderId' component={Detail}></Route>
+                </Switch>
+              </Common>
+            )
+          }} />
         </App>
       </Router>
     )

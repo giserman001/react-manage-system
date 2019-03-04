@@ -1,8 +1,19 @@
 @import './default.less';
 @import './loading.less';
 
+ul li{
+  list-style: none;
+}
+.clearfix{
+  &::after{
+    content:' ';
+    clear:both;
+    display: block;
+    visibility: hidden;
+  }
+}
+
 .containter{
-  display: flex;
   .nav-left{
     background: #001925;
     height: calc(100vh);
@@ -17,6 +28,10 @@
     position: relative;
     padding: 20px;
   }
+}
+.content{
+  position: relative;
+  padding: 20px;
 }
 .content-wrap{
   background: #fff;

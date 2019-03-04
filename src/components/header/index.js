@@ -37,28 +37,41 @@ export default class Header extends Component {
     })
   }
   render() {
+    let meanType = this.props.meanType
     return (
       <div className={style.header}>
-        <Row className={style['header-top']}>
-          <Col span={24}>
+        <Row className={meanType ? style['header-top-simple'] : style['header-top']}>
+          {
+            meanType ? (
+              <Col span={6} className={style.logoBox}>
+                <img src="/assets/logo-ant.svg" alt="" />
+                <span>React 通用管理系统</span>
+              </Col>
+            ) : ''
+          }
+          <Col span={meanType ? 18 : 24}>
             <span>欢迎, {this.state.userName}</span>
-            <a href='/'>退出</a>
+            <a className={meanType ? style['commonStyle'] : ''} href='/'>退出</a>
           </Col>
         </Row>
-        <Row className={style.breadcrumb}>
-          <Col span={4} className={style['breadcrumb-title']}>
-            首页
-          </Col>
-          <Col span={20} className={style.weather}>
-            <span className={style.date}>{this.state.sysTime}</span>
-            <span className={style['weather-img']}>
-              <img alt='' src={this.state.dayPictureUrl} />
-            </span>
-            <span className={style['weather-detail']}>
-              {this.state.weather}
-            </span>
-          </Col>
-        </Row>
+        {
+          meanType ? '' : (
+            <Row className={style.breadcrumb}>
+              <Col span={4} className={style['breadcrumb-title']}>
+                首页
+              </Col>
+              <Col span={20} className={style.weather}>
+                <span className={style.date}>{this.state.sysTime}</span>
+                <span className={style['weather-img']}>
+                  <img alt='' src={this.state.dayPictureUrl} />
+                </span>
+                <span className={style['weather-detail']}>
+                  {this.state.weather}
+                </span>
+              </Col>
+            </Row>
+          )
+        }
       </div>
     )
   }
