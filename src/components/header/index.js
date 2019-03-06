@@ -3,8 +3,9 @@ import { Row, Col } from 'antd'
 import util from '../../utils/util'
 import style from './index.module.less'
 import axios from '../../axios'
+import { connect } from 'react-redux'
 
-export default class Header extends Component {
+class Header extends Component {
   state = {}
   componentWillUnMount = () => {
     //2.定时器
@@ -58,7 +59,7 @@ export default class Header extends Component {
           meanType ? '' : (
             <Row className={style.breadcrumb}>
               <Col span={4} className={style['breadcrumb-title']}>
-                首页
+                { this.props.menuName }
               </Col>
               <Col span={20} className={style.weather}>
                 <span className={style.date}>{this.state.sysTime}</span>
@@ -76,3 +77,9 @@ export default class Header extends Component {
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    menuName: state.menuName
+  }
+}
+export default connect(mapStateToProps, null)(Header)

@@ -42,6 +42,24 @@ import Detail from '../pages/order/detail'
 // 员工管理
 import User from '../pages/user'
 
+// 车辆地图
+import BikeMap from '../pages/map/bikeMap'
+
+// 图表-柱形图
+import Bar from '../pages/echarts/bar/index'
+
+// 图表-饼图
+import Pie from '../pages/echarts/pie'
+
+// 图表-柱形图
+import BrokenLine from '../pages/echarts/brokenLine'
+
+// 权限
+import Permission from '../pages/permission'
+
+// 权限
+import Rich from '../pages/rich'
+
 
 
 import NoMatch from '../pages/noMatch'
@@ -50,47 +68,56 @@ export default class IRouter extends Component {
     return (
       <Router>
         <App>
-          <Route path='/login' component={Login}></Route>
-          <Route path='/' exact render={() => {
-            return (
-              <Redirect to='/admin/home'></Redirect>
-            )
-          }}></Route>
-          <Route path='/admin' render={(match) => {
-            console.log(match, '我有啥参数？')
-            return (
-              <Admin>
-                <Switch>
-                  <Route path='/admin/home' component={Home}></Route>
-                  <Route path='/admin/ui/buttons' component={Buttons}></Route>
-                  <Route path='/admin/ui/modals' component={Modals}></Route>
-                  <Route path='/admin/ui/loadings' component={Loadings}></Route>
-                  <Route path='/admin/ui/notification' component={Notification}></Route>
-                  <Route path='/admin/ui/messages' component={Message}></Route>
-                  <Route path='/admin/ui/tabs' component={Tab}></Route>
-                  <Route path='/admin/ui/gallery' component={Gallery}></Route>
-                  <Route path='/admin/ui/carousel' component={Carousels}></Route>
-                  <Route path='/admin/form/login' component={LoginFrom}></Route>
-                  <Route path='/admin/form/reg' component={RegisterForm}></Route>
-                  <Route path='/admin/table/basic' component={BasicTable}></Route>
-                  <Route path='/admin/table/high' component={Hightable}></Route>
-                  <Route path='/admin/city' component={City}></Route>
-                  <Route path='/admin/order' component={Order}></Route>
-                  <Route path='/admin/user' component={User}></Route>
-                  <Route component={NoMatch} />
-                </Switch>
-              </Admin>
-            )
-          }}></Route>
-          <Route path='/common' render={() => {
-            return (
-              <Common>
-                <Switch>
-                  <Route path='/common/order/detail/:orderId' component={Detail}></Route>
-                </Switch>
-              </Common>
-            )
-          }} />
+          <Switch>
+            <Route path='/login' component={Login}></Route>
+            <Route path='/common' render={() => {
+              return (
+                <Common>
+                  <Switch>
+                    <Route path='/common/order/detail/:orderId' exact component={Detail}></Route>
+                  </Switch>
+                </Common>
+              )
+            }} />
+            {/* 两种方式跳home页面 */}
+            {/* <Route path='/' exact render={() => {
+              return (
+                <Redirect to='/home'></Redirect>
+              )
+            }}></Route> */}
+            <Route path='/' render={() => {
+              return (
+                <Admin>
+                  <Switch>
+                    <Route path='/home' component={Home}></Route>
+                    <Route path='/ui/buttons' component={Buttons}></Route>
+                    <Route path='/ui/modals' component={Modals}></Route>
+                    <Route path='/ui/loadings' component={Loadings}></Route>
+                    <Route path='/ui/notification' component={Notification}></Route>
+                    <Route path='/ui/messages' component={Message}></Route>
+                    <Route path='/ui/tabs' component={Tab}></Route>
+                    <Route path='/ui/gallery' component={Gallery}></Route>
+                    <Route path='/ui/carousel' component={Carousels}></Route>
+                    <Route path='/form/login' component={LoginFrom}></Route>
+                    <Route path='/form/reg' component={RegisterForm}></Route>
+                    <Route path='/table/basic' component={BasicTable}></Route>
+                    <Route path='/table/high' component={Hightable}></Route>
+                    <Route path='/city' component={City}></Route>
+                    <Route path='/order' component={Order}></Route>
+                    <Route path='/user' component={User}></Route>
+                    <Route path='/bikeMap' component={BikeMap}></Route>
+                    <Route path='/charts/bar' component={Bar}></Route>
+                    <Route path='/charts/pie' component={Pie}></Route>
+                    <Route path='/charts/line' component={BrokenLine}></Route>
+                    <Route path='/permission' component={Permission}></Route>
+                    <Route path='/rich' component={Rich}></Route>
+                    <Redirect to='/home'></Redirect>
+                    <Route component={NoMatch} />
+                  </Switch>
+                </Admin>
+              )
+            }}></Route>
+          </Switch>
         </App>
       </Router>
     )

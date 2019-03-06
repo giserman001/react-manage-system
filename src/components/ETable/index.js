@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Table } from 'antd'
-import style from './index.module.less'
+// import style from './index.module.less'
 export default class ETable extends Component {
   state = {}
   //处理行点击事件
   onRowClick = (record, index) => {
     let rowSelection = this.props.rowSelection;
-    if (rowSelection == 'checkbox') {
+    if (rowSelection === 'checkbox') {
       let selectedRowKeys = this.props.selectedRowKeys;
       let selectedIds = this.props.selectedIds;
       let selectedItem = this.props.selectedItem || [];
@@ -30,7 +30,7 @@ export default class ETable extends Component {
     } else {
       let selectKey = [index];
       const selectedRowKeys = this.props.selectedRowKeys;
-      if (selectedRowKeys && selectedRowKeys[0] == index) {
+      if (selectedRowKeys && selectedRowKeys[0] === index) {
         return;
       }
       this.props.updateSelectedItem(selectKey, record || {});
@@ -49,7 +49,7 @@ export default class ETable extends Component {
   onSelectChange = (selectedRowKeys, selectedRows) => {
     let rowSelection = this.props.rowSelection;
     const selectedIds = [];
-    if (rowSelection == 'checkbox') {
+    if (rowSelection === 'checkbox') {
       selectedRows.map((item) => {
         selectedIds.push(item.id);
       });
@@ -112,7 +112,7 @@ export default class ETable extends Component {
     // 当属性未false或者null时，说明没有单选或者复选列
     if (row_selection === false || row_selection === null) {
       row_selection = false;
-    } else if (row_selection == 'checkbox') {
+    } else if (row_selection === 'checkbox') {
       //设置类型未复选框
       rowSelection.type = 'checkbox';
     } else {

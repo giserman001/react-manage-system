@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import style from './index.module.less'
+// import style from './index.module.less'
 // import axios from './../../axios/index';
 import util from '../../utils/util';
 
